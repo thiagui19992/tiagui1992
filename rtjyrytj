@@ -14,7 +14,7 @@ chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')  # Deshabilitar el sandboxing para compatibilidad con Termux
 
 # Inicializa el driver del navegador (Chrome)
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(executable_path='/data/data/com.termux/files/home/downloads/chromedriver', options=chrome_options)
 
 # Abre el navegador y navega a la página deseada
 driver.get("https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com.ar%2F&ec=GAZAmgQ&hl=es-419&ifkv=ASKXGp3VTsemB0w7fllaTOjOfXBNthYSW_jBUrQUhYY310BnolX3rO1VyCueexZ2YXbJZP6cnqzyaQ&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1357963073%3A1706308419396154&theme=glif")
