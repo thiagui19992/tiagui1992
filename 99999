@@ -1,0 +1,6 @@
+$ python python.py
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/python.py", line 17, in <module>
+    driver = webdriver.Chrome(executable_path='/data/data/com.termux/files/home/downloads/chromedriver', options=chrome_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: WebDriver.__init__() got an unexpected keyword argument 'executable_path'
