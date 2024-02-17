@@ -1,31 +1,15 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
+#!/bin/bash
 
-# Ruta al archivo con los datos
-archivo_datos = 'datos.txt'
+# Función para enviar texto a un campo de entrada
+send_text() {
+    input text "$1"
+}
 
-# Lee los datos desde el archivo
-with open(archivo_datos, 'r') as file:
-    dato = file.read().strip()
+# Abre la aplicación Google Chrome
+am start -n com.android.chrome/com.google.android.apps.chrome.Main -d "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&hl=es&ifkv=ATuJsjyPXIDBWpYk9SjuNgFvKMLBYCYlJiH6bonTyPGTBVLBwO9KoQx87zl40dpFcICimtVbtD_LVw&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-553091199%3A1708212033812302&theme=glif"
 
-# Configurar opciones de Chrome
-chrome_options = Options()
-chrome_options.add_argument('--no-sandbox')  # Deshabilitar el sandboxing para compatibilidad con Termux
+# Espera unos segundos para que la aplicación se abra completamente (ajustar según sea necesario)
+sleep 5
 
-# Inicializa el driver del navegador (Chrome)
-driver = webdriver.Chrome(executable_path='/data/data/com.termux/files/home/downloads/chromedriver', options=chrome_options)
-
-# Abre el navegador y navega a la página deseada
-driver.get("https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com.ar%2F&ec=GAZAmgQ&hl=es-419&ifkv=ASKXGp3VTsemB0w7fllaTOjOfXBNthYSW_jBUrQUhYY310BnolX3rO1VyCueexZ2YXbJZP6cnqzyaQ&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1357963073%3A1706308419396154&theme=glif")
-
-# Espera un tiempo para que la página se cargue completamente (ajustar según sea necesario)
-driver.implicitly_wait(10)
-
-# Encuentra el elemento de entrada y escribe el dato
-input_element = driver.find_element_by_id("identifierId")
-input_element.send_keys(dato)
-
-# Haz clic en el botón siguiente
-boton_siguiente = driver.find_element_by_xpath('//*[@id="identifierNext"]/div/button')
-boton_siguiente.click()
+# Envía el texto "pepe123" al campo de entrada
+send_text "pepe123"
